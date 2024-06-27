@@ -41,7 +41,6 @@ def rand_bits(irrational, start, end):
         irrational *= 2
         if i >= start:
             bits.append(int(irrational)%2)
-        irrational %= 1
     return bits
   
 def rand_bits_test():
