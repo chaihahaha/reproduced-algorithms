@@ -20,7 +20,7 @@ def is_prime_miller_riemann(n):
         d //= 2
         s += 1
     for a in range(2, min(n - 2, int(2 * math.log(n)**2)) + 1):
-        x = fast_mod_exp(a, d, n)
+        x = pow(a, d, n)
         for _ in range(s):
             y = x ** 2 % n
             if y == 1 and x != 1 and x != n - 1:
@@ -34,7 +34,7 @@ def is_prime_miller_riemann(n):
 
 def isprime_rand_test():
     # 随机测试算法正确性
-    max_n = 10000
+    max_n = 100000000
     odd = [2*i + 1 for i in range(1,max_n)]
     even = [2*i for i in range(1,max_n)]
     for i in range(10):
