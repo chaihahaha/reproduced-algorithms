@@ -2,6 +2,15 @@ import math
 import sympy
 import random
 
+def fast_mod_exp(b, exp, m):
+    res = 1
+    while exp > 1:
+        if exp & 1:
+            res = (res * b) % m
+        b = b ** 2 % m
+        exp >>= 1
+    return (b * res) % m
+
 def is_prime_miller_riemann(n):
     if n % 2 == 0:
         return False
@@ -11,7 +20,7 @@ def is_prime_miller_riemann(n):
         d //= 2
         s += 1
     for a in range(2, min(n - 2, int(2 * math.log(n)**2)) + 1):
-        x = a ** d % n
+        x = fast_mod_exp(a, d, n)
         for _ in range(s):
             y = x ** 2 % n
             if y == 1 and x != 1 and x != n - 1:
