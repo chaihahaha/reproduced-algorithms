@@ -22,7 +22,7 @@ def is_prime_miller_riemann(n):
     for a in range(2, min(n - 2, int(2 * math.log(n)**2)) + 1):
         x = pow(a, d, n)
         for _ in range(s):
-            y = x ** 2 % n
+            y = pow(x, 2, n)
             if y == 1 and x != 1 and x != n - 1:
                 # x是1的非平凡模n平方根，提前终止
                 return False
